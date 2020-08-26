@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the in-game UI components and relevant variables
@@ -11,6 +12,10 @@ public class GameplayUIManager : MonoBehaviour
     public Texture2D defaultCrosshairImage;
     public Texture2D meatCrosshairImage;
     public Texture2D broccoliCrosshairImage;
+
+    // Throw type buttons (already placed in the UI canvas) to use for selecting and indicating throw type
+    public GameObject meatButton;
+    public GameObject broccoliButton;
 
     /// <summary>
     /// Available types of object to throw
@@ -36,16 +41,35 @@ public class GameplayUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Set the in-game crosshair based on the current object throw type
+    /// Set the in-game crosshair and indicator based on the current object throw type
     /// </summary>
     void SetCrosshair()
     {
+        float selectedScale = 1.15f;
         if (throwType == ThrowType.MEAT)
+        {
             Cursor.SetCursor(meatCrosshairImage, new Vector2(32f, 32f), CursorMode.Auto);
+            meatButton.transform.GetChild(1).gameObject.SetActive(true);
+            broccoliButton.transform.GetChild(1).gameObject.SetActive(false);
+            meatButton.GetComponent<Image>().rectTransform.localScale = new Vector2(selectedScale, selectedScale);
+            broccoliButton.GetComponent<Image>().rectTransform.localScale = new Vector2(1f, 1f);
+        }
         else if (throwType == ThrowType.BROCCOLI)
+        {
             Cursor.SetCursor(broccoliCrosshairImage, new Vector2(32f, 32f), CursorMode.Auto);
+            meatButton.transform.GetChild(1).gameObject.SetActive(false);
+            broccoliButton.transform.GetChild(1).gameObject.SetActive(true);
+            meatButton.GetComponent<Image>().rectTransform.localScale = new Vector2(1f, 1f);
+            broccoliButton.GetComponent<Image>().rectTransform.localScale = new Vector2(selectedScale, selectedScale);
+        }
         else
+        {
             Cursor.SetCursor(defaultCrosshairImage, new Vector2(32f, 32f), CursorMode.Auto);
+            meatButton.transform.GetChild(1).gameObject.SetActive(false);
+            broccoliButton.transform.GetChild(1).gameObject.SetActive(false);
+            meatButton.GetComponent<Image>().rectTransform.localScale = new Vector2(1f, 1f);
+            broccoliButton.GetComponent<Image>().rectTransform.localScale = new Vector2(1f, 1f);
+        }
     }
 
     /// <summary>
