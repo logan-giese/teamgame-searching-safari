@@ -8,6 +8,9 @@ using UnityEngine.UI;
 /// </summary>
 public class GameplayUIManager : MonoBehaviour
 {
+    // The throw script to send throw type selections to
+    public ThrowScript throwScript;
+
     // The images to use for in-game crosshairs
     public Texture2D defaultCrosshairImage;
     public Texture2D meatCrosshairImage;
@@ -30,8 +33,8 @@ public class GameplayUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set the in-game cursor to a crosshair sprite based on the current throw type
-        SetCrosshair();
+        // Set the in-game cursor to a crosshair sprite based on the current throw type (and set indicators to disabled)
+        SetThrowIndicators();
     }
 
     // Update is called once per frame
@@ -41,9 +44,9 @@ public class GameplayUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Set the in-game crosshair and indicator based on the current object throw type
+    /// Set the in-game crosshair and indicators based on the current object throw type
     /// </summary>
-    void SetCrosshair()
+    void SetThrowIndicators()
     {
         float selectedScale = 1.15f;
         if (throwType == ThrowType.MEAT)
@@ -80,12 +83,14 @@ public class GameplayUIManager : MonoBehaviour
         if (throwType == ThrowType.MEAT)
         {
             throwType = ThrowType.NONE;
+            throwScript.SetThrowType(ThrowType.NONE);
         }
         else
         {
             throwType = ThrowType.MEAT;
+            throwScript.SetThrowType(ThrowType.MEAT);
         }
-        SetCrosshair();
+        SetThrowIndicators();
     }
 
     /// <summary>
@@ -96,12 +101,14 @@ public class GameplayUIManager : MonoBehaviour
         if (throwType == ThrowType.BROCCOLI)
         {
             throwType = ThrowType.NONE;
+            throwScript.SetThrowType(ThrowType.NONE);
         }
         else
         {
             throwType = ThrowType.BROCCOLI;
+            throwScript.SetThrowType(ThrowType.BROCCOLI);
         }
-        SetCrosshair();
+        SetThrowIndicators();
     }
 
 }
