@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class UIManager : MonoBehaviour
     {
         isStartMenu = true;
         resetButton.SetActive(false);
+        slider.value = 1;
+        gameVolume = 1;
     }
 
     // Update is called once per frame
@@ -25,15 +28,19 @@ public class UIManager : MonoBehaviour
         {
             resetButton.SetActive(true);
         }
+        AudioListener.volume = gameVolume;
     }
     public void playGame()
     {
         if(isStartMenu)
         {
-            // Debug.Log("Here");
             isStartMenu = false;
+            //load first level
         }
-        //Continue to current or first level
+        else
+        {
+            Time.timeScale = 1;
+        }
         //make sure to check for value passing between level
     }
     public void changeVolume()
@@ -43,8 +50,7 @@ public class UIManager : MonoBehaviour
     }
     public void resetLevel()
     {
-        Debug.Log("Reset");
-        //functionality for the level changing and the 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //make sure to check for value passing between level
     }
     public void quitGame()
