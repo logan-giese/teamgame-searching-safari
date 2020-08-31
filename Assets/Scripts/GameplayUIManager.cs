@@ -20,6 +20,9 @@ public class GameplayUIManager : MonoBehaviour
     public GameObject meatButton;
     public GameObject broccoliButton;
 
+    // The text object for displaying helpful information
+    public Text assistantText;
+
     /// <summary>
     /// Available types of object to throw
     /// </summary>
@@ -89,6 +92,8 @@ public class GameplayUIManager : MonoBehaviour
         {
             throwType = ThrowType.MEAT;
             throwScript.SetThrowType(ThrowType.MEAT);
+
+            SetAssistantText("That's a good chunk of meat!  A carnivorous animal would love it!");
         }
         SetThrowIndicators();
     }
@@ -107,8 +112,16 @@ public class GameplayUIManager : MonoBehaviour
         {
             throwType = ThrowType.BROCCOLI;
             throwScript.SetThrowType(ThrowType.BROCCOLI);
+
+            SetAssistantText("That's a fresh veggie!  An herbivorous animal would love that!");
         }
         SetThrowIndicators();
+    }
+
+    // Set the text displayed in the assistant text box
+    public void SetAssistantText(string text)
+    {
+        assistantText.text = text;
     }
 
 }

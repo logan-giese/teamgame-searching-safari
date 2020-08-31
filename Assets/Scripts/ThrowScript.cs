@@ -30,6 +30,9 @@ public class ThrowScript : MonoBehaviour
     // The currently selected type of object to throw
     private GameplayUIManager.ThrowType throwType = GameplayUIManager.ThrowType.NONE;
 
+    // The gameplay UI manager (used to send/trigger messages through the UI)
+    public GameplayUIManager gameplayUIManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +70,9 @@ public class ThrowScript : MonoBehaviour
 
                 // Set a delay before the player can throw again
                 throwTimer = delayBetweenThrows;
+
+                // Show a throw message
+                gameplayUIManager.SetAssistantText("Good throw!");
             }
         }
         else
