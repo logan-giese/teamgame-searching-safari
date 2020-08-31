@@ -21,8 +21,11 @@ public class ThrowScript : MonoBehaviour
     public float throwForce = 300.0f;
 
     // The delay before the player can throw again
-    public float delayBetweenThrows = 1.5f;
+    public float delayBetweenThrows = 1.0f;
     private float throwTimer = 0;
+
+    // Whether the throw functionality is enabled (disabled while mouse is over a button)
+    private bool throwEnabled = true;
 
     // The currently selected type of object to throw
     private GameplayUIManager.ThrowType throwType = GameplayUIManager.ThrowType.NONE;
@@ -39,7 +42,7 @@ public class ThrowScript : MonoBehaviour
         if (throwTimer <= 0)
         {
             // Detect click
-            if (Input.GetMouseButtonUp(0) && throwType != GameplayUIManager.ThrowType.NONE)
+            if (Input.GetMouseButtonUp(0) && throwType != GameplayUIManager.ThrowType.NONE && throwEnabled)
             {
                 // Collect info needed about click position to calculate throw
                 Vector3 mousePos = Input.mousePosition;
@@ -55,7 +58,7 @@ public class ThrowScript : MonoBehaviour
                 else
                     thrownObject = Instantiate(broccoliPrefab, throwPos, transform.rotation);
 
-                // Throw the object
+                // Throw the object (using a temporary empty object to get the angle right)
                 GameObject angler = new GameObject("ThrowAngle");
                 angler.transform.SetParent(transform);
                 angler.transform.LookAt(lookPos);
@@ -75,5 +78,14 @@ public class ThrowScript : MonoBehaviour
     public void SetThrowType(GameplayUIManager.ThrowType type)
     {
         throwType = type;
+    }
+
+    public void EnableThrow()
+    {
+        throwEnabled = true;
+    }
+    public void DisableThrow()
+    {
+        throwEnabled = false;
     }
 }
