@@ -51,7 +51,7 @@ public class ThrowScript : MonoBehaviour
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = startDistanceFromScreen;
                 Vector3 throwPos = playerCamera.ScreenToWorldPoint(mousePos);
-                mousePos.z = 50.0f;
+                mousePos.z = 100.0f;
                 Vector3 lookPos = playerCamera.ScreenToWorldPoint(mousePos);
 
                 // Spawn an appropriate object
