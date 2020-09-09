@@ -51,28 +51,28 @@ public class GameplayUIManager : MonoBehaviour
     /// </summary>
     void SetThrowIndicators()
     {
-        float selectedScale = 1.15f;
+        float selectedScale = 1.25f;
         if (throwType == ThrowType.MEAT)
         {
             Cursor.SetCursor(meatCrosshairImage, new Vector2(32f, 32f), CursorMode.Auto);
-            meatButton.transform.GetChild(1).gameObject.SetActive(true);
-            broccoliButton.transform.GetChild(1).gameObject.SetActive(false);
+            meatButton.transform.GetChild(0).gameObject.SetActive(true);
+            broccoliButton.transform.GetChild(0).gameObject.SetActive(false);
             meatButton.GetComponent<Image>().rectTransform.localScale = new Vector2(selectedScale, selectedScale);
             broccoliButton.GetComponent<Image>().rectTransform.localScale = new Vector2(1f, 1f);
         }
         else if (throwType == ThrowType.BROCCOLI)
         {
             Cursor.SetCursor(broccoliCrosshairImage, new Vector2(32f, 32f), CursorMode.Auto);
-            meatButton.transform.GetChild(1).gameObject.SetActive(false);
-            broccoliButton.transform.GetChild(1).gameObject.SetActive(true);
+            meatButton.transform.GetChild(0).gameObject.SetActive(false);
+            broccoliButton.transform.GetChild(0).gameObject.SetActive(true);
             meatButton.GetComponent<Image>().rectTransform.localScale = new Vector2(1f, 1f);
             broccoliButton.GetComponent<Image>().rectTransform.localScale = new Vector2(selectedScale, selectedScale);
         }
         else
         {
             Cursor.SetCursor(defaultCrosshairImage, new Vector2(32f, 32f), CursorMode.Auto);
-            meatButton.transform.GetChild(1).gameObject.SetActive(false);
-            broccoliButton.transform.GetChild(1).gameObject.SetActive(false);
+            meatButton.transform.GetChild(0).gameObject.SetActive(false);
+            broccoliButton.transform.GetChild(0).gameObject.SetActive(false);
             meatButton.GetComponent<Image>().rectTransform.localScale = new Vector2(1f, 1f);
             broccoliButton.GetComponent<Image>().rectTransform.localScale = new Vector2(1f, 1f);
         }
