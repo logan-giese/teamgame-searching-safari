@@ -8,8 +8,11 @@ public class creatureMovement : MonoBehaviour
     private Vector3 currentLocation;
     private Vector3 endLocations;
     private Vector3 scale;
+    private double speed = 5.00;
+    public string food;
     private bool isInArea = false;
     private bool isCorrectFood = false;
+    private bool outOfBounds = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,13 @@ public class creatureMovement : MonoBehaviour
     void Update()
     {
         move();
+        //if the object is out of bounds
+        if (spawnLocation.x == -40f && currentLocation.x > 40f)
+            Destroy(this.gameObject);
+        //else if spawned on right side
+        else if (spawnLocation.x == 40f && currentLocation.x < -40f)
+            Destroy(this.gameObject);
+        
     }
     public void spawn()
     {
@@ -39,6 +49,8 @@ public class creatureMovement : MonoBehaviour
         {
             // Debug.Log("Right Spawn");
             transform.position = new Vector3(40f, 1.2f, Random.Range(30f, 20f));
+            //rotate 180 degrees for the right side
+            transform.rotation = Quaternion.Euler(Vector3.up * 180);
         }
     }
     public void move()
@@ -47,10 +59,10 @@ public class creatureMovement : MonoBehaviour
         currentLocation = transform.position;
         //if spawned on left side
         if (spawnLocation.x == -40f)
-            currentLocation.x += 5f * Time.deltaTime;
+            currentLocation.x += (float)speed * Time.deltaTime;
         //else if spawned on right side
         else if (spawnLocation.x == 40f)
-            currentLocation.x -= 5f * Time.deltaTime;
+            currentLocation.x -= (float)speed * Time.deltaTime;
         //else the tutorial for the player 
 
         //set the new position
@@ -74,13 +86,16 @@ public class creatureMovement : MonoBehaviour
     {
         return isCorrectFood;
     }
+    public void setSpeed(double speed)
+    {
+        this.speed = speed;
+    }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
         if (other.tag == "broccoli" || other.tag == "meat")
         {
             isInArea = true;
-            if (other.tag == "broccoli")
+            if (other.tag == food)
             {
                 isCorrectFood = true;
             }
@@ -88,6 +103,8 @@ public class creatureMovement : MonoBehaviour
             {
                 isCorrectFood = false;
             }
+
         }
+        Destroy(other.gameObject);
     }
 }
