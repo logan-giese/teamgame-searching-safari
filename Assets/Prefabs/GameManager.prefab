@@ -43,3 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992833a3bdefb834a9c4eb247533fc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Elephant: {fileID: 7747463477180169246, guid: fd1c53ca4e0083842b5bf119d1ffa898, type: 3}
+  Giraffe: {fileID: 9138054624325196965, guid: 0802950d0536b684ebf42e87a10cb132, type: 3}
+  Lion: {fileID: 5570188983152841281, guid: 1e8e9b139d43c864ca88dcbb3d7d7017, type: 3}
+  Rhino: {fileID: 3398288754284571394, guid: a782d3c6db2da8640891d0c31ac8d036, type: 3}
+  Frog: {fileID: 2583851222883999096, guid: b670846b3d3161b438359ac8842524e6, type: 3}
+  Crocodile: {fileID: 5479972342566905815, guid: dc80358a7520d0c469ba8762b57bf6c3, type: 3}
