@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Eating : StateMachineBehaviour
+public class Idle : StateMachineBehaviour
 {
-     private creatureMovement spawner;
+    private CharacterManager characterManager;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        spawner = animator.GetComponent<Transform>().parent.GetComponent<Transform>().gameObject.GetComponent<creatureMovement>();
-        //Debug.Log("Eating");
-        if(spawner.getIsCorrectFood())
-            animator.SetBool("isCorrectFood",true);
-        else
-            animator.SetBool("isCorrectFood",false);
-        spawner.setIsInArea(false);
+        characterManager = animator.GetComponent<Transform>().parent.GetComponent<Transform>().gameObject.GetComponent<CharacterManager>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //Set the value to what the manager has currently
+        animator.SetInteger("feedbackFlag",characterManager.feedback());
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

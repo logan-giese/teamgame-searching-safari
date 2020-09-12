@@ -8,7 +8,9 @@ public class creatureMovement : MonoBehaviour
     private Vector3 currentLocation;
     private Vector3 endLocations;
     private Vector3 scale;
-    private double speed = 5.00;
+    private GameManager gameManager;
+    private int flag = -1; //-1 is no action, 0 is wrong, 1 is correct
+    private double speed = 1.75;
     public string food;
     private bool isInArea = false;
     private bool isCorrectFood = false;
@@ -21,6 +23,9 @@ public class creatureMovement : MonoBehaviour
         // //get position
         spawnLocation = transform.position;
         currentLocation = spawnLocation;
+
+        //get the game manager to communicate with for feedback to user input
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -33,6 +38,8 @@ public class creatureMovement : MonoBehaviour
         //else if spawned on right side
         else if (spawnLocation.x == 40f && currentLocation.x < -40f)
             Destroy(this.gameObject);
+        
+
         
     }
     public void spawn()
