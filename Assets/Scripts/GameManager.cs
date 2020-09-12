@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance = null;
+
     /*
         These variables are all the animal prefabs that will be spawned for the levels.
         5 of each animal for the each level. 1 animal every 7 seconds
@@ -22,7 +24,19 @@ public class GameManager : MonoBehaviour
     static int level = 1;
     private float timer = 0f;
     //game manager will be told about the flag status by the creatures and be accessed by the character
-    private int flag = -1;//-1 is no response,0 is wrong, 1 is correct
+    private int flag = -1;//-1 is no response, 0 is wrong, 1 is correct
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+            Destroy(gameObject);
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
