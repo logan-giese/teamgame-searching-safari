@@ -50,13 +50,13 @@ public class creatureMovement : MonoBehaviour
         if (roll % 2 == 0)
         {
             // Debug.Log("Left Spawn");
-            transform.position = new Vector3(-40f, 1.2f, Random.Range(40f, 60f));
+            transform.position = new Vector3(-40f, 0f, Random.Range(40f, 60f));
         }
         //else right
         else
         {
             // Debug.Log("Right Spawn");
-            transform.position = new Vector3(40f, 1.2f, Random.Range(30f, 20f));
+            transform.position = new Vector3(40f, 0f, Random.Range(30f, 20f));
             //rotate 180 degrees for the right side
             transform.rotation = Quaternion.Euler(Vector3.up * 180);
         }
@@ -111,8 +111,7 @@ public class creatureMovement : MonoBehaviour
             {
                 isCorrectFood = false;
             }
-
+            Destroy(other.gameObject);
         }
-        Destroy(other.gameObject);
     }
 }

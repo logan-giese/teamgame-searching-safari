@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         timer += Time.deltaTime;
         if(timer >= (float)7f)
         {
-            int roll = Random.Range(0,3);
+            int roll = Random.Range(0,4);
             if(Count[roll] < 5)
             {
                 if(roll == 0)
@@ -43,14 +43,17 @@ public class GameManager : MonoBehaviour
                 else if(roll == 1)
                 {
                     //spawn Giraffe
+                    Instantiate(Giraffe);
                 }
                 else if(roll == 2)
                 {
                     //spawn Lion
+                    Instantiate(Lion);
                 }
-                else
+                else if(roll == 3)
                 {
                     //spawn Rhino
+                    Instantiate(Rhino);
                 }
                 Count[roll]++;
             }
