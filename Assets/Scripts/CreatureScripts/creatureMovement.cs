@@ -45,6 +45,7 @@ public class creatureMovement : MonoBehaviour
     public void spawn()
     {
         int roll = Random.Range(1, 100);
+        transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
         //if even left
         if (roll % 2 == 0)
         {

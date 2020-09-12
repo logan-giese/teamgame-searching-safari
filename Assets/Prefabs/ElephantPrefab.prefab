@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &377240113
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2261856519228759917}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e18953038784f684591618e110f65f6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!54 &1102969527
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29,25 +48,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.625962, y: 1.7282085, z: 1.4555408}
   m_Center: {x: 1.0769004, y: -0.14872336, z: 0.0035948157}
---- !u!95 &377240113
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2261856519228759917}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e18953038784f684591618e110f65f6a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3787403961807419178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,15 +73,15 @@ PrefabInstance:
       objectReference: {fileID: 2033108269973791953, guid: e0fcbe42f0aa3eb4096b05f02ce3d404, type: 3}
     - target: {fileID: 3164963270161968380, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.88
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968380, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.132153
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968380, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.48975384
+      value: 56.472385
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968380, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968380, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968380, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968380, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.00000004371139
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968380, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_RootOrder
@@ -117,7 +117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968381, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: m_Name
-      value: CreaturePrefab
+      value: ElephantPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164963270161968381, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
+      propertyPath: m_TagString
+      value: Creature
       objectReference: {fileID: 0}
     - target: {fileID: 3164963270161968383, guid: 03c041f2f4e21f54fb35edf7cdf2031c, type: 3}
       propertyPath: food
