@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages static game variables and globally-accessible operations
@@ -18,8 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject Frog;
     public GameObject Crocodile;
     private int[] Count = {0,0,0,0,0,0};
-    private bool allDestroyed = false;
-    private int level = 1;
+    static int level = 1;
     private float timer = 0f;
     //game manager will be told about the flag status by the creatures and be accessed by the character
     private int flag = -1;//-1 is no response,0 is wrong, 1 is correct
@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log($"Level {level} Finished");
                 level = 2;
+                SceneManager.LoadScene("garrettTesting2");
             }
         }
         if(level == 2)
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
             if(ar.Length == 0 && count == 30)
             {
                 Debug.Log($"Level {level} Finished");
-                level = 2;
+                level = 0;
             }
         }
         
