@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e881e312f1f557b419f112b3fa1ec0f2
+guid: f11d6fab6c7b54943b4465f777837004
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: polySurface13Mat
-    second: {fileID: 2100000, guid: 1a20bcbf8d90a9b48a14eb350a9253e4, type: 2}
+      name: lambert2
+    second: {fileID: 2100000, guid: d3b4db74de55acc4abf6558823928b89, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
