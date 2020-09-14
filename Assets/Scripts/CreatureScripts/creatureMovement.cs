@@ -9,12 +9,13 @@ public class creatureMovement : MonoBehaviour
     private Vector3 endLocations;
     private Vector3 scale;
     private GameManager gameManager;
-    private int flag = -1; //-1 is no action, 0 is wrong, 1 is correct
+    // private int flag = -1; //-1 is no action, 0 is wrong, 1 is correct
     private double speed = 1.75;
     public string food;
+    public string Creature;
+    public int InfoIndex;
     private bool isInArea = false;
     private bool isCorrectFood = false;
-    private bool outOfBounds = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +39,6 @@ public class creatureMovement : MonoBehaviour
         //else if spawned on right side
         else if (spawnLocation.x == 40f && currentLocation.x < -40f)
             Destroy(this.gameObject);
-        
-
-        
     }
     public void spawn()
     {
@@ -112,6 +110,15 @@ public class creatureMovement : MonoBehaviour
                 isCorrectFood = false;
             }
             Destroy(other.gameObject);
+            setInfoDisplay();
+        }
+    }
+    //This function will see if the flag for the the creature has already been set and then sets the infoDisplay to that creature
+    public void setInfoDisplay()
+    {
+        if(!gameManager.getInfoFlag(InfoIndex))
+        {
+            gameManager.setInfoDisplay(Creature);
         }
     }
 }

@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     public GameObject Frog;
     public GameObject Crocodile;
     private int[] Count = {0,0,0,0,0,0};
+    private bool[] InfoFlag = {false,false,false,false,false,false};
+    //This variable will be set by the creature if the flags are false 
+    private string infoDisplay = "None";
+
     static int level = 1;
     private float timer = 0f;
     //game manager will be told about the flag status by the creatures and be accessed by the character
@@ -40,7 +44,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Begin");
+        // Debug.Log("Begin");
     }
 
     // Update is called once per frame
@@ -92,12 +96,13 @@ public class GameManager : MonoBehaviour
             timer = 0f;
             endCurrentLevel();
         }
+        checkInfoFlags();
     }
     public void endCurrentLevel()
     {
         int count = 0;
         GameObject[] ar = GameObject.FindGameObjectsWithTag("Creature");
-        Debug.Log($"Level {level}");
+        // Debug.Log($"Level {level}");
         foreach(int c in Count)
         {
             count += c;
@@ -107,7 +112,7 @@ public class GameManager : MonoBehaviour
             //if the array size is 0 and the count is equal to 20 then change
             if(ar.Length == 0 && count == 20)
             {
-                Debug.Log($"Level {level} Finished");
+                // Debug.Log($"Level {level} Finished");
                 level = 2;
                 SceneManager.LoadScene("garrettTesting2");
             }
@@ -121,7 +126,6 @@ public class GameManager : MonoBehaviour
                 level = 0;
             }
         }
-        
     }
     public int getFlag()
     {
@@ -130,5 +134,54 @@ public class GameManager : MonoBehaviour
     public void setFlag(int flag)
     {
         this.flag = flag;
+    }
+    public void setInfoDisplay(string infoDisplay)
+    {
+        this.infoDisplay = infoDisplay;
+    }
+    public string getInfoDisplay()
+    {
+        return infoDisplay;
+    }
+    public void setInfoFlag(int index, bool infoFlag)
+    {
+        this.InfoFlag[index] = infoFlag;
+    }
+    public bool getInfoFlag(int index)
+    {
+        return InfoFlag[index];
+    }
+    private void checkInfoFlags()
+    {
+        //Debug.Log("Checking Flags");
+        switch(infoDisplay)
+        {
+            case "Elephant":
+            InfoFlag[0] = true;
+            Debug.Log("Hit");
+            break;
+            case "Lion":
+            InfoFlag[1] = true;
+            Debug.Log("Hit");
+            break;
+            case "Giraffe":
+            InfoFlag[2] = true;
+            Debug.Log("Hit");
+            break;
+            case "Rhino":
+            InfoFlag[3] = true;
+            Debug.Log("Hit");
+            break;
+            case "Frog":
+            InfoFlag[4] = true;
+            Debug.Log("Hit");
+            break;
+            case "Crocodile":
+            InfoFlag[5] = true;
+            Debug.Log("Hit");
+            break;
+            default:
+            break;
+        }
     }
 }

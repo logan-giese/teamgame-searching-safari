@@ -6,9 +6,11 @@ public class Eating : StateMachineBehaviour
 {
      private creatureMovement spawner;
      private GameManager gameManager;
+     private AudioSource soundSource;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        soundSource = animator.GetComponent<Transform>().parent.GetComponent<Transform>().gameObject.GetComponent<AudioSource>();
         spawner = animator.GetComponent<Transform>().parent.GetComponent<Transform>().gameObject.GetComponent<creatureMovement>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         //Debug.Log("Eating");
@@ -23,6 +25,7 @@ public class Eating : StateMachineBehaviour
             animator.SetBool("isCorrectFood",false);
         }
         spawner.setIsInArea(false);
+        soundSource.Play();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
