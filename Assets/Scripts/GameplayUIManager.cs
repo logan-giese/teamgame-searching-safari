@@ -8,6 +8,9 @@ using UnityEngine.UI;
 /// </summary>
 public class GameplayUIManager : MonoBehaviour
 {
+    // The GameManager used for global communication
+    private GameManager gm;
+
     // The throw script to send throw type selections to
     public ThrowScript throwScript;
 
@@ -23,6 +26,9 @@ public class GameplayUIManager : MonoBehaviour
     // The text object for displaying helpful information
     public Text assistantText;
 
+    // The popup box object for displaying animal information/facts
+    public GameObject popupBox;
+
     /// <summary>
     /// Available types of object to throw
     /// </summary>
@@ -36,14 +42,42 @@ public class GameplayUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get the game manager object from the scene
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         // Set the in-game cursor to a crosshair sprite based on the current throw type (and set indicators to disabled)
         SetThrowIndicators();
+
+        // Hide the popup box to start with
+        popupBox.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Check if an animal has been selected (correct food given)
+        string selectedAnimal = gm.getInfoDisplay();
+        int correctFlag = gm.getFlag();
+        if (selectedAnimal != "None")
+        {
+            Text infoTitle = popupBox.transform.GetChild(0).gameObject.GetComponent<Text>(); // Get info title (1st child)
+            Text infoDescription = popupBox.transform.GetChild(1).gameObject.GetComponent<Text>(); // Get info description (2nd child)
+            Image infoImage = popupBox.transform.GetChild(2).gameObject.GetComponent<Image>(); // Get info image (3rd child)
+            gm.setInfoDisplay("None");
+
+            infoTitle.text = selectedAnimal;
+            // TODO - set description
+            // TODO - set image
+            popupBox.SetActive(true);
+            meatButton.SetActive(false);
+            broccoliButton.SetActive(false);
+            Time.timeScale = 0.0f; // Freeze time for the popup
+        }
+        // Check if a wrong animal was selected
+        if (correctFlag == 0)
+        {
+            SetAssistantText("WRONGAMUNDO! Try again!");
+        }
     }
 
     /// <summary>
@@ -122,6 +156,15 @@ public class GameplayUIManager : MonoBehaviour
     public void SetAssistantText(string text)
     {
         assistantText.text = text;
+    }
+
+    // Close the popup box by setting it inactive
+    public void ClosePopup()
+    {
+        popupBox.SetActive(false);
+        meatButton.SetActive(true);
+        broccoliButton.SetActive(true);
+        Time.timeScale = 1.0f; // Unfreeze time when popup is closed
     }
 
 }
