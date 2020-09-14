@@ -8,6 +8,7 @@ TagManager:
   - meat
   - Creature
   - GameManager
+  - Light
   layers:
   - Default
   - TransparentFX
