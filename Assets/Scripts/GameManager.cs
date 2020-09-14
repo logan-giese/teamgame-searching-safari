@@ -98,6 +98,10 @@ public class GameManager : MonoBehaviour
         }
         checkInfoFlags();
     }
+    private void levelTransition()
+    {
+        
+    }
     public void endCurrentLevel()
     {
         int count = 0;
@@ -114,7 +118,7 @@ public class GameManager : MonoBehaviour
             {
                 // Debug.Log($"Level {level} Finished");
                 level = 2;
-                SceneManager.LoadScene("garrettTesting2");
+                SceneManager.LoadScene("Night_level");
             }
         }
         if(level == 2)

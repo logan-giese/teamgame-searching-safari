@@ -34,10 +34,10 @@ public class creatureMovement : MonoBehaviour
     {
         move();
         //if the object is out of bounds
-        if (spawnLocation.x == -40f && currentLocation.x > 40f)
+        if (spawnLocation.x == -48f && currentLocation.x > 48f)
             Destroy(this.gameObject);
         //else if spawned on right side
-        else if (spawnLocation.x == 40f && currentLocation.x < -40f)
+        else if (spawnLocation.x == 48f && currentLocation.x < -48f)
             Destroy(this.gameObject);
     }
     public void spawn()
@@ -48,13 +48,13 @@ public class creatureMovement : MonoBehaviour
         if (roll % 2 == 0)
         {
             // Debug.Log("Left Spawn");
-            transform.position = new Vector3(-40f, 0f, Random.Range(40f, 60f));
+            transform.position = new Vector3(-48f, 0f, Random.Range(15f, 25f));
         }
         //else right
         else
         {
             // Debug.Log("Right Spawn");
-            transform.position = new Vector3(40f, 0f, Random.Range(30f, 20f));
+            transform.position = new Vector3(48f, 0f, Random.Range(15f, 25f));
             //rotate 180 degrees for the right side
             transform.rotation = Quaternion.Euler(Vector3.up * 180);
         }
@@ -64,10 +64,10 @@ public class creatureMovement : MonoBehaviour
         //get current location for the update
         currentLocation = transform.position;
         //if spawned on left side
-        if (spawnLocation.x == -40f)
+        if (spawnLocation.x == -48f)
             currentLocation.x += (float)speed * Time.deltaTime;
         //else if spawned on right side
-        else if (spawnLocation.x == 40f)
+        else if (spawnLocation.x == 48f)
             currentLocation.x -= (float)speed * Time.deltaTime;
         //else the tutorial for the player 
 
