@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = null;
+    private Light directionalLight;
 
     /*
         These variables are all the animal prefabs that will be spawned for the levels.
@@ -22,9 +23,10 @@ public class GameManager : MonoBehaviour
     public GameObject Crocodile;
     private int[] Count = {0,0,0,0,0,0};
     private bool[] InfoFlag = {false,false,false,false,false,false};
+    private bool levelIsChanging = false;
     //This variable will be set by the creature if the flags are false 
     private string infoDisplay = "None";
-
+    private float counter = 0f;
     static int level = 1;
     private float timer = 0f;
     //game manager will be told about the flag status by the creatures and be accessed by the character
@@ -44,14 +46,41 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Debug.Log("Begin");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!levelIsChanging && SceneManager.GetActiveScene().name != "MainMenu")
+            spawnAnimal();
+        checkInfoFlags();
+        levelTransition();
+    }
+    //This function will run during the update to check if the level has changed
+    // to Turn down the directional light to the correct setting
+    private void levelTransition()
+    {
+        if(level == 2 && SceneManager.GetActiveScene().name == "Day_level")
+        {
+            if(directionalLight.intensity > 10)
+            {
+                counter += Time.deltaTime;
+                //Fade from 1 to 0
+                int alpha = (int)Mathf.Lerp(10000, 10, counter / 10);
+                directionalLight.intensity = alpha;
+            }
+            else
+            {
+                levelIsChanging = false;
+                SceneManager.LoadScene("Night_level");
+            }
+        }
+    }
+    private void spawnAnimal()
+    {
         timer += Time.deltaTime;
-        if(timer >= (float)7f)
+        if(timer >= (float)3f)
         {
             int roll = Random.Range(0,4);
             if(level == 2)
@@ -96,11 +125,6 @@ public class GameManager : MonoBehaviour
             timer = 0f;
             endCurrentLevel();
         }
-        checkInfoFlags();
-    }
-    private void levelTransition()
-    {
-        
     }
     public void endCurrentLevel()
     {
@@ -118,7 +142,9 @@ public class GameManager : MonoBehaviour
             {
                 // Debug.Log($"Level {level} Finished");
                 level = 2;
-                SceneManager.LoadScene("Night_level");
+                levelIsChanging = true;
+                //This is getting the directional light for the scene transition
+                directionalLight = GameObject.FindGameObjectWithTag("Light").GetComponent<Light>();
             }
         }
         if(level == 2)
@@ -126,8 +152,9 @@ public class GameManager : MonoBehaviour
             //if the array size is 0 and the count is equal to 20 then change
             if(ar.Length == 0 && count == 30)
             {
-                Debug.Log($"Level {level} Finished");
+                // Debug.Log($"Level {level} Finished");
                 level = 0;
+                levelIsChanging = true;
             }
         }
     }

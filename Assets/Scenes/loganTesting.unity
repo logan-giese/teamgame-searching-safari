@@ -495,6 +495,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992833a3bdefb834a9c4eb247533fc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Elephant: {fileID: 0}
+  Giraffe: {fileID: 0}
+  Lion: {fileID: 0}
+  Rhino: {fileID: 0}
+  Frog: {fileID: 0}
+  Crocodile: {fileID: 0}
 --- !u!114 &1586755335 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9144753173704007816, guid: 6c1909b822b0c5c48848e4a1b228f781, type: 3}
@@ -647,6 +653,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1823597371149666424
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528576, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265672824452528580, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+      propertyPath: m_Name
+      value: Meat
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
 --- !u!1001 &5389146096212067669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -654,6 +717,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1132813198192039144, guid: 2210e2ff36839f247ad7738cce85650f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1217109782}
+    - target: {fileID: 1132813198192039144, guid: 2210e2ff36839f247ad7738cce85650f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389146095173965037, guid: 2210e2ff36839f247ad7738cce85650f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389146095173965037, guid: 2210e2ff36839f247ad7738cce85650f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389146095173965037, guid: 2210e2ff36839f247ad7738cce85650f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389146095173965037, guid: 2210e2ff36839f247ad7738cce85650f, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7254902
+      objectReference: {fileID: 0}
     - target: {fileID: 5389146095281297984, guid: 2210e2ff36839f247ad7738cce85650f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -764,6 +851,63 @@ PrefabInstance:
       objectReference: {fileID: 1586755335}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2210e2ff36839f247ad7738cce85650f, type: 3}
+--- !u!1001 &7201641792923431874
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 514965059308484056, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_Name
+      value: Broccoli
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.588
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514965059308484060, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
 --- !u!1001 &9050655070600709357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -876,6 +1020,14 @@ PrefabInstance:
       propertyPath: gameplayUIManager
       value: 
       objectReference: {fileID: 1217109782}
+    - target: {fileID: 9144753173704007816, guid: 6c1909b822b0c5c48848e4a1b228f781, type: 3}
+      propertyPath: meatPrefab
+      value: 
+      objectReference: {fileID: 7265672824452528580, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
+    - target: {fileID: 9144753173704007816, guid: 6c1909b822b0c5c48848e4a1b228f781, type: 3}
+      propertyPath: broccoliPrefab
+      value: 
+      objectReference: {fileID: 514965059308484056, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
     - target: {fileID: 9144753173704007817, guid: 6c1909b822b0c5c48848e4a1b228f781, type: 3}
       propertyPath: m_Name
       value: Player
