@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0c6c344f525666647a16e3c7376b2884
+guid: ecdac82649badeb4bbc1a4b591a58eec
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultMat
-    second: {fileID: 2100000, guid: 39a66f412a4ebc142b096d7ac8228374, type: 2}
+      name: Skin_ZSphere_2
+    second: {fileID: 2100000, guid: 85d439b6f5c9bf44ca35fbc5281266d9, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -39,7 +39,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -90,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.5
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
