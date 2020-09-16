@@ -58,25 +58,30 @@ public class GameplayUIManager : MonoBehaviour
         // Check if an animal has been selected (correct food given)
         string selectedAnimal = gm.getInfoDisplay();
         int correctFlag = gm.getFlag();
+
         if (selectedAnimal != "None")
         {
-            Text infoTitle = popupBox.transform.GetChild(0).gameObject.GetComponent<Text>(); // Get info title (1st child)
-            Text infoDescription = popupBox.transform.GetChild(1).gameObject.GetComponent<Text>(); // Get info description (2nd child)
-            Image infoImage = popupBox.transform.GetChild(2).gameObject.GetComponent<Image>(); // Get info image (3rd child)
-            gm.setInfoDisplay("None");
+            // Check if a wrong animal was selected
+            if (correctFlag == 0)
+            {
+                SetAssistantText("WRONGAMUNDO! Try again!");
+            }
+            else
+            {
+                Text infoTitle = popupBox.transform.GetChild(0).gameObject.GetComponent<Text>(); // Get info title (1st child)
+                Text infoDescription = popupBox.transform.GetChild(1).gameObject.GetComponent<Text>(); // Get info description (2nd child)
+                Image infoImage = popupBox.transform.GetChild(2).gameObject.GetComponent<Image>(); // Get info image (3rd child)
 
-            infoTitle.text = selectedAnimal;
-            // TODO - set description
-            // TODO - set image
-            popupBox.SetActive(true);
-            meatButton.SetActive(false);
-            broccoliButton.SetActive(false);
-            Time.timeScale = 0.0f; // Freeze time for the popup
-        }
-        // Check if a wrong animal was selected
-        if (correctFlag == 0)
-        {
-            SetAssistantText("WRONGAMUNDO! Try again!");
+                infoTitle.text = selectedAnimal;
+                // TODO - set description
+                // TODO - set image
+
+                popupBox.SetActive(true);
+                meatButton.SetActive(false);
+                broccoliButton.SetActive(false);
+                Time.timeScale = 0.0f; // Freeze time for the popup
+            }
+            gm.setInfoDisplay("None"); // Reset the selected animal variable
         }
     }
 

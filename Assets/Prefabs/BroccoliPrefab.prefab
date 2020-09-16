@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4706030941025421704}
   m_Layer: 0
   m_Name: BroccoliPrefab
-  m_TagString: meat
+  m_TagString: broccoli
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
