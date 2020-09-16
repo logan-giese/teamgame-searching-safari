@@ -239,7 +239,7 @@ MonoBehaviour:
   broccoliPrefab: {fileID: 9050655070639937837, guid: 65a31d8566eff374a89388fd4984a8e4, type: 3}
   startDistanceFromScreen: 1
   throwForce: 300
-  delayBetweenThrows: 1
+  delayBetweenThrows: 1.2
   gameplayUIManager: {fileID: 0}
 --- !u!114 &9144753173704007814
 MonoBehaviour:
