@@ -58,14 +58,6 @@ public class GameManager : MonoBehaviour
             spawnAnimal();
         checkInfoFlags();
         levelTransition();
-        if(flag == 0)
-        {
-            Debug.Log("Wrong Food");
-        }
-        else if(flag == 1)
-        {
-            Debug.Log("Correct Food");
-        }
     }
     //This function will run during the update to check if the level has changed
     // to Turn down the directional light to the correct setting
@@ -83,8 +75,18 @@ public class GameManager : MonoBehaviour
             else
             {
                 levelIsChanging = false;
+                Count = new int[] {0,0,0,0,0,0};
                 SceneManager.LoadScene("Night_level");
             }
+        }
+        else if(level == 0 && SceneManager.GetActiveScene().name == "Night_level")
+        {
+            //reset everything in case they want to play again
+            level = 1;
+            levelIsChanging = false;
+            Count = new int[] {0,0,0,0,0,0};
+            InfoFlag = new bool[] {false,false,false,false,false,false}
+            SceneManager.LoadScene("MainMenu");
         }
     }
     private void spawnAnimal()
