@@ -73,6 +73,7 @@ public class ThrowScript : MonoBehaviour
 
                 // Show a throw message
                 gameplayUIManager.SetAssistantText("Good throw!");
+                SoundEffectScript.PlayEffect(0);
             }
         }
         else

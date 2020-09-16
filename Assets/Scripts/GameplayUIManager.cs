@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages the in-game UI components and relevant variables
@@ -50,6 +51,12 @@ public class GameplayUIManager : MonoBehaviour
 
         // Hide the popup box to start with
         popupBox.SetActive(false);
+
+        // Play the intro clip when starting level 1
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            DialogueScript.PlayClip(0);
+        }
     }
 
     // Update is called once per frame
@@ -65,6 +72,7 @@ public class GameplayUIManager : MonoBehaviour
             if (correctFlag == 0)
             {
                 SetAssistantText("WRONGAMUNDO! Try again!");
+                DialogueScript.PlayClip(6);
             }
             else
             {
