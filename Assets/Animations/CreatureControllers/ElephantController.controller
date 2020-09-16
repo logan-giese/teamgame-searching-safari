@@ -51,7 +51,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7ee94998a3e3e8043937553788cdfdcb, type: 2}
+  m_Motion: {fileID: 1827226128182048838, guid: b923b98a477069f46b83b4f775f11612, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -365,7 +365,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e4cd961e91c361f4a8f176b5062714f7, type: 2}
+  m_Motion: {fileID: 1827226128182048838, guid: d72379b6e96314c41b1ae5ab09492fe3, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -383,7 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3c719ac99b22a49914f7ba59adcdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundClip: {fileID: 8300000, guid: aa78db9dc26fa1847a9576ba659bf33c, type: 3}
 --- !u!1101 &5458555545757828255
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -456,7 +455,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d3f7d78f76e7de44ba233772e6af2efc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1e4ebdae09ed86e478f3b1ed2f644c1f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
