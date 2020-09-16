@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
     {
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.clip = musicClip;
-        musicSource.volume = 0.5f;
+        musicSource.volume = 0.4f;
         musicSource.loop = true;
         musicSource.Play();
     }
