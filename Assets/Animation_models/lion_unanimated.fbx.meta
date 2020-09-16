@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2ca7465af1fa4cf4398a6144b7185e11
+guid: c6edc9701bacafe4a8decc29df88fd58
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Body
-    second: {fileID: 2100000, guid: 32145f99d2a70f044be61c789d8cb67a, type: 2}
+      name: PM3D_Sphere3D1
+    second: {fileID: 2100000, guid: 12a185f3ebd87714ab9f11d7188f3826, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PM3D_Sphere3D1_1
+    second: {fileID: 2100000, guid: 12a185f3ebd87714ab9f11d7188f3826, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PM3D_Sphere3D2
+    second: {fileID: 2100000, guid: 12a185f3ebd87714ab9f11d7188f3826, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -39,7 +49,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 11
+    globalScale: 7
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -90,7 +100,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.11
+    globalScale: 7
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
