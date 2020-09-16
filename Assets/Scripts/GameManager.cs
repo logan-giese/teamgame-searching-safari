@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     static int level = 1;
     private float timer = 0f;
     //game manager will be told about the flag status by the creatures and be accessed by the character
+    //The flag is changed in two locations 1. is in the character animation script for reactions and the other is in the creature script for eating
+    //This means that they will change IF AND ONLY IF THE ANIMATOR CONTROLLER IS SET GARRETT YOU BIG IDIOT.
     private int flag = -1;//-1 is no response, 0 is wrong, 1 is correct
 
     private void Awake()
@@ -56,6 +58,14 @@ public class GameManager : MonoBehaviour
             spawnAnimal();
         checkInfoFlags();
         levelTransition();
+        if(flag == 0)
+        {
+            Debug.Log("Wrong Food");
+        }
+        else if(flag == 1)
+        {
+            Debug.Log("Correct Food");
+        }
     }
     //This function will run during the update to check if the level has changed
     // to Turn down the directional light to the correct setting

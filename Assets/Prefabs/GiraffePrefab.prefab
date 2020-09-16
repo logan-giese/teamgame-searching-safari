@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 9138054624325196963}
   - component: {fileID: 9138054624325196964}
   - component: {fileID: 8378767512507667291}
+  - component: {fileID: 4395049447655674451}
   m_Layer: 0
   m_Name: GiraffePrefab
   m_TagString: Creature
@@ -214,6 +215,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4395049447655674451
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138054624325196965}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3c0a648f11505a4582bdca43d13decb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &450589294063364319
 PrefabInstance:
   m_ObjectHideFlags: 0

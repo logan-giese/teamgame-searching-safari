@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 7747463477180169232}
   - component: {fileID: 7747463477180169247}
   - component: {fileID: 2817492157969545239}
+  - component: {fileID: 5711730026489698174}
   m_Layer: 0
   m_Name: ElephantPrefab
   m_TagString: Creature
@@ -194,6 +195,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &5711730026489698174
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747463477180169246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8b27ce005330ce4a9a4cf5800bca89f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7976692094737509549
 PrefabInstance:
   m_ObjectHideFlags: 0
