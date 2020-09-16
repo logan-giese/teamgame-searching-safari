@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     private void spawnAnimal()
     {
         timer += Time.deltaTime;
-        if(timer >= (float)3f)
+        if(timer >= (float)10f)
         {
             int roll = Random.Range(0,4);
             if(level == 2)
