@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7265672824452528581}
   - component: {fileID: 7265672824452528577}
   - component: {fileID: 7265672824452528578}
+  - component: {fileID: 4856313208458583307}
   m_Layer: 0
   m_Name: MeatPrefab
   m_TagString: meat
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7265672824452528580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.09, y: 0.31, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -105,7 +106,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7265672824452528580}
   serializedVersion: 2
-  m_Mass: 0.7
+  m_Mass: 1.6
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -126,3 +127,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   massMultiplier: 4
+--- !u!114 &4856313208458583307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265672824452528580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8933f97ac69eea45ba8b905ee20cae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDespawn: 6
