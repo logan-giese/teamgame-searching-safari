@@ -40,6 +40,10 @@ public class GameplayUIManager : MonoBehaviour
     /// </summary>
     ThrowType throwType = ThrowType.NONE;
 
+    // General-purpose timer for timed events
+    private float timer = 0.0f;
+    private bool introPt2Played = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,11 +61,21 @@ public class GameplayUIManager : MonoBehaviour
         {
             DialogueScript.PlayClip(0);
         }
+        timer = 6.8f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (timer > 0.0f)
+            timer -= Time.deltaTime;
+        else if (!introPt2Played)
+        {
+            DialogueScript.PlayClip(1); // Throw a meat!
+            SetAssistantText("Throw a treat to the animals that eat meat!");
+            introPt2Played = true;
+        }
+
         // Check if an animal has been selected (correct food given)
         string selectedAnimal = gm.getInfoDisplay();
         int correctFlag = gm.getFlag();
@@ -71,7 +85,7 @@ public class GameplayUIManager : MonoBehaviour
             // Check if a wrong animal was selected
             if (correctFlag == 0)
             {
-                SetAssistantText("WRONGAMUNDO! Try again!");
+                SetAssistantText("That was incorrect. Try again!");
                 DialogueScript.PlayClip(6);
             }
             else
@@ -81,8 +95,30 @@ public class GameplayUIManager : MonoBehaviour
                 Image infoImage = popupBox.transform.GetChild(2).gameObject.GetComponent<Image>(); // Get info image (3rd child)
 
                 infoTitle.text = selectedAnimal;
-                // TODO - set description
-                // TODO - set image
+                switch (selectedAnimal)
+                {
+                    case "Elephant":
+                        infoDescription.text = "Did you know: African elephants can use their trunk to pick up small items!";
+                        infoImage.sprite = Resources.Load<Sprite>("AnimalImages/Elephant");
+                        DialogueScript.PlayClip(9);
+                        break;
+                    case "Giraffe":
+                        infoDescription.text = "Did you know: Giraffes only need to drink once every few days!";
+                        infoImage.sprite = Resources.Load<Sprite>("AnimalImages/Giraffe");
+                        DialogueScript.PlayClip(10);
+                        break;
+                    case "Lion":
+                        infoDescription.text = "Did you know: The heaviest lion on record weighed eight hundred and twenty six pounds!";
+                        infoImage.sprite = Resources.Load<Sprite>("AnimalImages/Lion");
+                        DialogueScript.PlayClip(11);
+                        break;
+                    case "Rhino":
+                        infoDescription.text = "Did you know: Rhinos have thick skin, but they can still get sunburnt!";
+                        infoImage.sprite = Resources.Load<Sprite>("AnimalImages/Rhino");
+                        DialogueScript.PlayClip(12);
+                        break;
+                    // TODO - bullfrog and crocodile
+                }
 
                 popupBox.SetActive(true);
                 meatButton.SetActive(false);

@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
             level = 1;
             levelIsChanging = false;
             Count = new int[] {0,0,0,0,0,0};
-            InfoFlag = new bool[] {false,false,false,false,false,false}
+            InfoFlag = new bool[] { false, false, false, false, false, false };
             SceneManager.LoadScene("MainMenu");
         }
     }

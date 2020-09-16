@@ -316,7 +316,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.85
-  m_Text: Sample text is a useful placeholder while you develop UI!
+  m_Text: Welcome to Searching Safari!  I'm your guide, Lily!
 --- !u!1 &5389146095173965027
 GameObject:
   m_ObjectHideFlags: 0
