@@ -12,8 +12,10 @@ public class creatureMovement : MonoBehaviour
     // private int flag = -1; //-1 is no action, 0 is wrong, 1 is correct
     private double speed = 1.75;
     public string food;
+    //name of teh creature
     public string Creature;
-    public int InfoIndex;
+    //index of the creature for all arrays
+    public int Index;
     private bool isInArea = false;
     private bool isCorrectFood = false;
     // Start is called before the first frame update
@@ -96,6 +98,11 @@ public class creatureMovement : MonoBehaviour
     {
         this.speed = speed;
     }
+    /*
+    The OnTriggerEnter will be called for every collision with the creature
+    this should set the flag for the state machine to true or false if the collider is a food
+    This will call the animalHit function of the game manager to send it info about what animal was hit and if the food was correct.
+    */
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "broccoli" || other.tag == "meat")
@@ -104,21 +111,14 @@ public class creatureMovement : MonoBehaviour
             if (other.tag == food)
             {
                 isCorrectFood = true;
+                //will tell the game manager if the creature is hit with the correct food.
+                gameManager.animalHit(Index, isCorrectFood, Creature, food);
             }
             else
             {
                 isCorrectFood = false;
-            }
+            }            
             Destroy(other.gameObject);
-            setInfoDisplay();
-        }
-    }
-    //This function will see if the flag for the the creature has already been set and then sets the infoDisplay to that creature
-    public void setInfoDisplay()
-    {
-        if(!gameManager.getInfoFlag(InfoIndex))
-        {
-            gameManager.setInfoDisplay(Creature);
         }
     }
 }

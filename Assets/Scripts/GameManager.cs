@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject Crocodile;
     private int[] Count = {0,0,0,0,0,0};
     private bool[] InfoFlag = {false,false,false,false,false,false};
+    //The Variable that determines if the level is changed 
+    private int conditionAnimal = 0;
     private bool levelIsChanging = false;
     //This variable will be set by the creature if the flags are false 
     private string infoDisplay = "None";
@@ -55,15 +57,19 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(!levelIsChanging && SceneManager.GetActiveScene().name != "MainMenu")
-            spawnAnimal();
-        checkInfoFlags();
-        levelTransition();
+            {
+                spawnAnimal();
+                checkInfoFlags();
+            }
+        if(levelIsChanging)
+            levelTransition();
     }
     //This function will run during the update to check if the level has changed
     // to Turn down the directional light to the correct setting
     private void levelTransition()
     {
-        if(level == 2 && SceneManager.GetActiveScene().name == "Day_level")
+        directionalLight = GameObject.FindGameObjectWithTag("Light").GetComponent<Light>();
+        if(level == 2 && levelIsChanging)
         {
             if(directionalLight.intensity > 10)
             {
@@ -75,100 +81,123 @@ public class GameManager : MonoBehaviour
             else
             {
                 levelIsChanging = false;
-                Count = new int[] {0,0,0,0,0,0};
                 SceneManager.LoadScene("Night_level");
             }
         }
-        else if(level == 0 && SceneManager.GetActiveScene().name == "Night_level")
+        else if(level == 0 && levelIsChanging)
         {
             //reset everything in case they want to play again
             level = 1;
             levelIsChanging = false;
-            Count = new int[] {0,0,0,0,0,0};
-            InfoFlag = new bool[] { false, false, false, false, false, false };
             SceneManager.LoadScene("MainMenu");
         }
     }
+    /*
+    This function will constantly spawn animals. It will only spawn one kind, but if they are despawned they will respawn the animal.
+    */
     private void spawnAnimal()
     {
         timer += Time.deltaTime;
-        if(timer >= (float)10f)
+        if(timer >= (float)4f)
         {
-            int roll = Random.Range(0,4);
-            if(level == 2)
-            roll = Random.Range(0,6);
-            if(Count[roll] < 5)
+            if(Count[0] < 1)
             {
-                if(roll == 0)
+                //spawn Elephant
+                Debug.Log("Spawned 0");
+                Instantiate(Elephant);
+                Count[0]++;
+            }
+            else if(Count[1] < 1)
+            {
+                //spawn Giraffe
+                Debug.Log("Spawned 1");
+                Instantiate(Giraffe);
+                Count[1]++;
+            }
+            else if(Count[2] < 1)
+            {
+                //spawn Lion
+                Debug.Log("Spawned 2");
+                Instantiate(Lion);
+                Count[2]++;
+            }
+            else if(Count[3] < 1)
+            {
+                //spawn Rhino
+                Debug.Log("Spawned 3");
+                Instantiate(Rhino);
+                Count[3]++;
+            }
+            //if the level switched from 1 to 2
+            if(level == 2)
+            {
+                if(Count[4] < 1)
                 {
-                    //spawn Elephant
-                    Instantiate(Elephant);
+                    Debug.Log("Spawned 4");
+                    Instantiate(Frog);
+                    Count[4]++;
                 }
-                else if(roll == 1)
+                else if(Count[5] < 1)
                 {
-                    //spawn Giraffe
-                    Instantiate(Giraffe);
+                    Debug.Log("Spawned 5");
+                    Instantiate(Crocodile);
+                    Count[5]++;
                 }
-                else if(roll == 2)
-                {
-                    //spawn Lion
-                    Instantiate(Lion);
-                }
-                else if(roll == 3)
-                {
-                    //spawn Rhino
-                    Instantiate(Rhino);
-                }
-                //if the level switched from 1 to 2
-                if(level == 2)
-                {
-                    if(roll == 4)
-                    {
-                        Instantiate(Frog);
-                    }
-                    else if(roll == 5)
-                    {
-                        Instantiate(Crocodile);
-                    }
-                }
-                Count[roll]++;
             }
 
             timer = 0f;
             endCurrentLevel();
         }
     }
+    /*
+    The endCurrentLevel function will check to see if the about of required animals was his by the player.
+    if the level is one then we should be setting level to 2, raising the levelIsChanging flag, reseting the conditionAnimal variable, and reseting the Count array
+    if the level is two then we set level to 0, raise the levelIsChanging flag, reset the conditionalAnimal, and rest the InfoFlag and Count arrays
+    */
     public void endCurrentLevel()
     {
-        int count = 0;
-        GameObject[] ar = GameObject.FindGameObjectsWithTag("Creature");
-        // Debug.Log($"Level {level}");
-        foreach(int c in Count)
+        //Level condition check
+        if(conditionAnimal >= 5)
         {
-            count += c;
-        }
-        if(level == 1)
-        {
-            //if the array size is 0 and the count is equal to 20 then change
-            if(ar.Length == 0 && count == 20)
+            //Level One
+            if(level == 1)
             {
-                // Debug.Log($"Level {level} Finished");
                 level = 2;
                 levelIsChanging = true;
-                //This is getting the directional light for the scene transition
-                directionalLight = GameObject.FindGameObjectWithTag("Light").GetComponent<Light>();
+                conditionAnimal = 0;
+                Count = new int[] {0,0,0,0,0,0};
             }
-        }
-        if(level == 2)
-        {
-            //if the array size is 0 and the count is equal to 20 then change
-            if(ar.Length == 0 && count == 30)
+            //Level Two
+            else
             {
-                // Debug.Log($"Level {level} Finished");
                 level = 0;
                 levelIsChanging = true;
+                conditionAnimal = 0;
+                Count = new int[] {0,0,0,0,0,0};
+                InfoFlag = new bool[] { false, false, false, false, false, false };
             }
         }
+    }
+    /*
+    The animalHit function will take an index and a flag to decrease the count for the animal index and determine if the food was correct
+    */
+    public void animalHit(int index, bool flag, string creature, string food)
+    {
+        Debug.Log("Collision Detected");
+        //set Count and index to zero
+        Count[index]--;
+        //add to the conditionAnimal if flag is true and set the flag for the infoFlags
+        if(level == 1)
+            conditionAnimal++;
+        else if(level == 2 && food == "meat")
+            conditionAnimal++;
+        if(!InfoFlag[index])
+            {
+                InfoFlag[index] = true;
+                infoDisplay = creature;
+            }
+        
+
     }
     public int getFlag()
     {
@@ -194,6 +223,9 @@ public class GameManager : MonoBehaviour
     {
         return InfoFlag[index];
     }
+    /*
+    The checkInfoFlags function will check to see which animal was hit and sets the infoDisplay to that animal.
+    */
     private void checkInfoFlags()
     {
         //Debug.Log("Checking Flags");
