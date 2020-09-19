@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class creatureMovement : MonoBehaviour
 {
     private Vector3 spawnLocation;
     private Vector3 currentLocation;
-    private Vector3 endLocations;
+    private Vector3 endLocation;
     private Vector3 scale;
+    private NavMeshAgent agent;
     private GameManager gameManager;
     // private int flag = -1; //-1 is no action, 0 is wrong, 1 is correct
     private double speed = 1.75;
@@ -21,12 +23,13 @@ public class creatureMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         // //roll for which side to spawn on
         spawn();
         // //get position
         spawnLocation = transform.position;
         currentLocation = spawnLocation;
-
+        agent.destination = new Vector3(15f,0f,30f); 
         //get the game manager to communicate with for feedback to user input
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -34,13 +37,23 @@ public class creatureMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move();
+        //move();
+        currentLocation = transform.position;
+        //if the creature has hit the mdway point
+        if(currentLocation.x < 15f && currentLocation.x > 10f)
+        agent.destination = endLocation;
         //if the object is out of bounds
         if (spawnLocation.x == -48f && currentLocation.x > 48f)
-            Destroy(this.gameObject);
+            {
+                Destroy(this.gameObject);
+                gameManager.decreaseCount(Index);
+            }
         //else if spawned on right side
         else if (spawnLocation.x == 48f && currentLocation.x < -48f)
-            Destroy(this.gameObject);
+            {
+                Destroy(this.gameObject);
+                gameManager.decreaseCount(Index);
+            }
     }
     public void spawn()
     {
@@ -50,15 +63,17 @@ public class creatureMovement : MonoBehaviour
         if (roll % 2 == 0)
         {
             // Debug.Log("Left Spawn");
-            transform.position = new Vector3(-48f, 0f, Random.Range(15f, 25f));
+            transform.position = new Vector3(-48f, 0f, Random.Range(23f, 25f));
+            endLocation = new Vector3(50f,0f,20f);
         }
         //else right
         else
         {
             // Debug.Log("Right Spawn");
-            transform.position = new Vector3(48f, 0f, Random.Range(15f, 25f));
+            transform.position = new Vector3(48f, 0f, Random.Range(23f, 25f));
             //rotate 180 degrees for the right side
             transform.rotation = Quaternion.Euler(Vector3.up * 180);
+            endLocation = new Vector3(-50f,0f,20f);
         }
     }
     public void move()

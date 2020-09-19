@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2583851222883999097}
   - component: {fileID: 1212196662039720498}
   - component: {fileID: 2224379805306332331}
+  - component: {fileID: 6198575108011264785}
   m_Layer: 0
   m_Name: FrogPrefab
   m_TagString: Creature
@@ -79,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   food: meat
   Creature: Frog
-  InfoIndex: 4
+  Index: 0
 --- !u!82 &1212196662039720498
 AudioSource:
   m_ObjectHideFlags: 0
@@ -195,6 +196,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!195 &6198575108011264785
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2583851222883999096}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!95 &2583851221730481651
 Animator:
   serializedVersion: 3

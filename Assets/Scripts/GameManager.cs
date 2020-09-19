@@ -32,8 +32,7 @@ public class GameManager : MonoBehaviour
     static int level = 1;
     private float timer = 0f;
     //game manager will be told about the flag status by the creatures and be accessed by the character
-    //The flag is changed in two locations 1. is in the character animation script for reactions and the other is in the creature script for eating
-    //This means that they will change IF AND ONLY IF THE ANIMATOR CONTROLLER IS SET GARRETT YOU BIG IDIOT.
+    //The flag is changed in one location that is not the game manager 1. is in the character animation script for reactions
     private int flag = -1;//-1 is no response, 0 is wrong, 1 is correct
 
     private void Awake()
@@ -184,20 +183,32 @@ public class GameManager : MonoBehaviour
     public void animalHit(int index, bool flag, string creature, string food)
     {
         Debug.Log("Collision Detected");
-        //set Count and index to zero
-        Count[index]--;
-        //add to the conditionAnimal if flag is true and set the flag for the infoFlags
-        if(level == 1)
-            conditionAnimal++;
-        else if(level == 2 && food == "meat")
-            conditionAnimal++;
-        if(!InfoFlag[index])
-            {
-                InfoFlag[index] = true;
-                infoDisplay = creature;
-            }
-        
-
+        if(flag)
+        {
+            //set Count and index to zero
+            Count[index]--;
+            //add to the conditionAnimal if flag is true and set the flag for the infoFlags
+            if(level == 1)
+                conditionAnimal++;
+            else if(level == 2 && food == "meat")
+                conditionAnimal++;
+            if(!InfoFlag[index])
+                {
+                    InfoFlag[index] = true;
+                    infoDisplay = creature;
+                }
+            //set this.flag = true
+            this.flag = 1;
+        }
+        else
+        {
+            //set this.flag = false
+            this.flag = 0;
+        }
+    }
+    public int getConditionAnimal()
+    {
+        return conditionAnimal;
     }
     public int getFlag()
     {
@@ -222,6 +233,10 @@ public class GameManager : MonoBehaviour
     public bool getInfoFlag(int index)
     {
         return InfoFlag[index];
+    }
+    public void decreaseCount(int index)
+    {
+        Count[index]--;
     }
     /*
     The checkInfoFlags function will check to see which animal was hit and sets the infoDisplay to that animal.

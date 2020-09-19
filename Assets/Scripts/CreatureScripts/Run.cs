@@ -18,7 +18,6 @@ public class Run : StateMachineBehaviour
         //spawner.test();
         if(spawner.getIsInArea())
         {
-            //Debug.Log("PeePeePooPoo");
             animator.SetTrigger("Eating");
         }
     }

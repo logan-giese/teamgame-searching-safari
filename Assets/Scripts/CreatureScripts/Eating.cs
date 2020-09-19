@@ -12,16 +12,13 @@ public class Eating : StateMachineBehaviour
     {
         soundSource = animator.GetComponent<Transform>().parent.GetComponent<Transform>().gameObject.GetComponent<AudioSource>();
         spawner = animator.GetComponent<Transform>().parent.GetComponent<Transform>().gameObject.GetComponent<creatureMovement>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         //Debug.Log("Eating");
         if(spawner.getIsCorrectFood())
         {
-            gameManager.setFlag(1);
             animator.SetBool("isCorrectFood",true);
         }
         else
         {
-            gameManager.setFlag(0);
             animator.SetBool("isCorrectFood",false);
         }
         spawner.setIsInArea(false);

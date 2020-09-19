@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5479972342566905809}
   - component: {fileID: 5479972342566905808}
   - component: {fileID: 8082364068017433674}
+  - component: {fileID: -8423511386144750132}
   m_Layer: 0
   m_Name: CrocodilePrefab
   m_TagString: Creature
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   food: meat
   Creature: Crocodile
-  InfoIndex: 5
+  Index: 0
 --- !u!82 &8082364068017433674
 AudioSource:
   m_ObjectHideFlags: 0
@@ -175,6 +176,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!195 &-8423511386144750132
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479972342566905815}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!95 &2811884356731202438
 Animator:
   serializedVersion: 3
