@@ -238,7 +238,7 @@ MonoBehaviour:
   meatPrefab: {fileID: 7265672824452528580, guid: 384bb3c9c1b48374bb40211e93849a22, type: 3}
   broccoliPrefab: {fileID: 514965059308484056, guid: 71ff016619bd7bc44b5e58e1aae41c83, type: 3}
   startDistanceFromScreen: 1
-  throwForce: 950
+  throwForce: 1500
   delayBetweenThrows: 1.2
   gameplayUIManager: {fileID: 0}
 --- !u!114 &9144753173704007814
