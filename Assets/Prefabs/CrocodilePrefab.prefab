@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   food: meat
   Creature: Crocodile
-  Index: 0
+  Index: 5
 --- !u!82 &8082364068017433674
 AudioSource:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5479972342566905815}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 10
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

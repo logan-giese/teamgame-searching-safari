@@ -126,13 +126,14 @@ public class creatureMovement : MonoBehaviour
             if (other.tag == food)
             {
                 isCorrectFood = true;
-                //will tell the game manager if the creature is hit with the correct food.
-                gameManager.animalHit(Index, isCorrectFood, Creature, food);
+
             }
             else
             {
                 isCorrectFood = false;
-            }            
+            }
+            //will tell the game manager if the creature is hit with the correct food or the wrong food
+            gameManager.animalHit(Index, isCorrectFood, Creature, food);            
             Destroy(other.gameObject);
         }
     }

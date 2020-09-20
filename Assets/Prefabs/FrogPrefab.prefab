@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   food: meat
   Creature: Frog
-  Index: 0
+  Index: 4
 --- !u!82 &1212196662039720498
 AudioSource:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2583851222883999096}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

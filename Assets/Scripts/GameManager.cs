@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject Crocodile;
     private int[] Count = {0,0,0,0,0,0};
     private bool[] InfoFlag = {false,false,false,false,false,false};
+    //Variable for all animals that are correctly fed
+    private int score = 0;
     //The Variable that determines if the level is changed 
     private int conditionAnimal = 0;
     private bool levelIsChanging = false;
@@ -97,33 +99,29 @@ public class GameManager : MonoBehaviour
     private void spawnAnimal()
     {
         timer += Time.deltaTime;
-        if(timer >= (float)4f)
+        if(timer >= (float)5f)
         {
             if(Count[0] < 1)
             {
                 //spawn Elephant
-                Debug.Log("Spawned 0");
                 Instantiate(Elephant);
                 Count[0]++;
             }
             else if(Count[1] < 1)
             {
                 //spawn Giraffe
-                Debug.Log("Spawned 1");
                 Instantiate(Giraffe);
                 Count[1]++;
             }
             else if(Count[2] < 1)
             {
                 //spawn Lion
-                Debug.Log("Spawned 2");
                 Instantiate(Lion);
                 Count[2]++;
             }
             else if(Count[3] < 1)
             {
                 //spawn Rhino
-                Debug.Log("Spawned 3");
                 Instantiate(Rhino);
                 Count[3]++;
             }
@@ -132,13 +130,11 @@ public class GameManager : MonoBehaviour
             {
                 if(Count[4] < 1)
                 {
-                    Debug.Log("Spawned 4");
                     Instantiate(Frog);
                     Count[4]++;
                 }
                 else if(Count[5] < 1)
                 {
-                    Debug.Log("Spawned 5");
                     Instantiate(Crocodile);
                     Count[5]++;
                 }
@@ -172,6 +168,7 @@ public class GameManager : MonoBehaviour
                 level = 0;
                 levelIsChanging = true;
                 conditionAnimal = 0;
+                score = 0;
                 Count = new int[] {0,0,0,0,0,0};
                 InfoFlag = new bool[] { false, false, false, false, false, false };
             }
@@ -188,27 +185,40 @@ public class GameManager : MonoBehaviour
             //set Count and index to zero
             Count[index]--;
             //add to the conditionAnimal if flag is true and set the flag for the infoFlags
-            if(level == 1)
+            if(level == 1 && food == "meat")
                 conditionAnimal++;
-            else if(level == 2 && food == "meat")
+            else if(level == 2 && food == "broccoli")
                 conditionAnimal++;
             if(!InfoFlag[index])
                 {
-                    InfoFlag[index] = true;
+                    // InfoFlag[index] = true;
                     infoDisplay = creature;
                 }
             //set this.flag = true
             this.flag = 1;
+            //increase the score count
+            score++;
         }
         else
         {
             //set this.flag = false
             this.flag = 0;
         }
+        int i = 0;
+        foreach(bool f in InfoFlag)
+        {
+            Debug.Log($"{i}:{f}");
+            i++;
+        }
+        Debug.Log($"Creature:{infoDisplay}");
     }
     public int getConditionAnimal()
     {
         return conditionAnimal;
+    }
+    public int getScore()
+    {
+        return score;
     }
     public int getFlag()
     {
@@ -243,32 +253,25 @@ public class GameManager : MonoBehaviour
     */
     private void checkInfoFlags()
     {
-        //Debug.Log("Checking Flags");
         switch(infoDisplay)
         {
             case "Elephant":
             InfoFlag[0] = true;
-            Debug.Log("Hit");
             break;
             case "Lion":
             InfoFlag[1] = true;
-            Debug.Log("Hit");
             break;
             case "Giraffe":
             InfoFlag[2] = true;
-            Debug.Log("Hit");
             break;
             case "Rhino":
             InfoFlag[3] = true;
-            Debug.Log("Hit");
             break;
             case "Frog":
             InfoFlag[4] = true;
-            Debug.Log("Hit");
             break;
             case "Crocodile":
             InfoFlag[5] = true;
-            Debug.Log("Hit");
             break;
             default:
             break;
