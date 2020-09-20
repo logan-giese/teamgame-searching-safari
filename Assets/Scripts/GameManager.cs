@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     //Variable for all animals that are correctly fed
     private int score = 0;
     //The Variable that determines if the level is changed 
-    private int conditionAnimal = 0;
+    private int ConditionalPoints = 0;
     private bool levelIsChanging = false;
     //This variable will be set by the creature if the flags are false 
     private string infoDisplay = "None";
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
             {
                 counter += Time.deltaTime;
                 //Fade from 1 to 0
-                int alpha = (int)Mathf.Lerp(10000, 10, counter / 10);
+                int alpha = (int)Mathf.Lerp(10000, 10, counter / 4.5f);
                 directionalLight.intensity = alpha;
             }
             else
@@ -146,20 +146,20 @@ public class GameManager : MonoBehaviour
     }
     /*
     The endCurrentLevel function will check to see if the about of required animals was his by the player.
-    if the level is one then we should be setting level to 2, raising the levelIsChanging flag, reseting the conditionAnimal variable, and reseting the Count array
+    if the level is one then we should be setting level to 2, raising the levelIsChanging flag, reseting the ConditionalPoints variable, and reseting the Count array
     if the level is two then we set level to 0, raise the levelIsChanging flag, reset the conditionalAnimal, and rest the InfoFlag and Count arrays
     */
     public void endCurrentLevel()
     {
         //Level condition check
-        if(conditionAnimal >= 5)
+        if(ConditionalPoints >= 1)
         {
             //Level One
             if(level == 1)
             {
                 level = 2;
                 levelIsChanging = true;
-                conditionAnimal = 0;
+                ConditionalPoints = 0;
                 Count = new int[] {0,0,0,0,0,0};
             }
             //Level Two
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
             {
                 level = 0;
                 levelIsChanging = true;
-                conditionAnimal = 0;
+                ConditionalPoints = 0;
                 score = 0;
                 Count = new int[] {0,0,0,0,0,0};
                 InfoFlag = new bool[] { false, false, false, false, false, false };
@@ -179,16 +179,13 @@ public class GameManager : MonoBehaviour
     */
     public void animalHit(int index, bool flag, string creature, string food)
     {
-        Debug.Log("Collision Detected");
         if(flag)
         {
-            //set Count and index to zero
-            Count[index]--;
-            //add to the conditionAnimal if flag is true and set the flag for the infoFlags
+            //add to the ConditionalPoints if flag is true and set the flag for the infoFlags
             if(level == 1 && food == "meat")
-                conditionAnimal++;
+                ConditionalPoints++;
             else if(level == 2 && food == "broccoli")
-                conditionAnimal++;
+                ConditionalPoints++;
             if(!InfoFlag[index])
                 {
                     // InfoFlag[index] = true;
@@ -204,17 +201,10 @@ public class GameManager : MonoBehaviour
             //set this.flag = false
             this.flag = 0;
         }
-        int i = 0;
-        foreach(bool f in InfoFlag)
-        {
-            Debug.Log($"{i}:{f}");
-            i++;
-        }
-        Debug.Log($"Creature:{infoDisplay}");
     }
-    public int getConditionAnimal()
+    public int getConditionalPoints()
     {
-        return conditionAnimal;
+        return ConditionalPoints;
     }
     public int getScore()
     {

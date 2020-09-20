@@ -126,7 +126,7 @@ public class creatureMovement : MonoBehaviour
             if (other.tag == food)
             {
                 isCorrectFood = true;
-
+                agent.speed = 7f;
             }
             else
             {
