@@ -11,6 +11,7 @@ public class GameplayUIManager : MonoBehaviour
 {
     // The GameManager used for global communication
     private GameManager gm;
+    private int level = 0;
 
     // The throw script to send throw type selections to
     public ThrowScript throwScript;
@@ -30,6 +31,9 @@ public class GameplayUIManager : MonoBehaviour
     // The popup box object for displaying animal information/facts
     public GameObject popupBox;
 
+    // The score indicator text box
+    public Text scoreText;
+
     /// <summary>
     /// Available types of object to throw
     /// </summary>
@@ -42,7 +46,12 @@ public class GameplayUIManager : MonoBehaviour
 
     // General-purpose timer for timed events
     private float timer = 0.0f;
-    private bool introPt2Played = false;
+    private bool level1Prompt = false;
+    private bool level2Prompt = false;
+
+    // Cache of score data to determine whether the score indicator needs to be updated
+    private int totalScoreCached = 0;
+    private int levelScoreCached = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -57,23 +66,36 @@ public class GameplayUIManager : MonoBehaviour
         popupBox.SetActive(false);
 
         // Play the intro clip when starting level 1
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        level = SceneManager.GetActiveScene().buildIndex;
+        if (level == 1)
         {
             DialogueScript.PlayClip(0);
+            timer = 6.8f;
+            level1Prompt = true;
         }
-        timer = 6.8f;
+        else if (level == 2)
+        {
+            level2Prompt = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Handle timer and intro clip
         if (timer > 0.0f)
             timer -= Time.deltaTime;
-        else if (!introPt2Played)
+        else if (level1Prompt)
+        {
+            DialogueScript.PlayClip(2); // Throw a broccoli!
+            SetAssistantText("Throw a treat to the animals that eat leaves!");
+            level1Prompt = false;
+        }
+        else if (level2Prompt)
         {
             DialogueScript.PlayClip(1); // Throw a meat!
             SetAssistantText("Throw a treat to the animals that eat meat!");
-            introPt2Played = true;
+            level2Prompt = false;
         }
 
         // Check if an animal has been selected (correct food given)
@@ -117,7 +139,16 @@ public class GameplayUIManager : MonoBehaviour
                         infoImage.sprite = Resources.Load<Sprite>("AnimalImages/Rhino");
                         DialogueScript.PlayClip(12);
                         break;
-                    // TODO - bullfrog and crocodile
+                    case "Frog":
+                        infoDescription.text = "Did you know: African bullfrogs can live up to forty five years!";
+                        infoImage.sprite = Resources.Load<Sprite>("AnimalImages/Bullfrog");
+                        DialogueScript.PlayClip(7);
+                        break;
+                    case "Crocodile":
+                        infoDescription.text = "Did you know: Africa's largest crocodile can reach twenty feet and a thousand six hundred pounds!";
+                        infoImage.sprite = Resources.Load<Sprite>("AnimalImages/Crocodile");
+                        DialogueScript.PlayClip(8);
+                        break;
                 }
 
                 popupBox.SetActive(true);
@@ -126,6 +157,18 @@ public class GameplayUIManager : MonoBehaviour
                 Time.timeScale = 0.0f; // Freeze time for the popup
             }
             gm.setInfoDisplay("None"); // Reset the selected animal variable
+        }
+
+        // Update the score indicator
+        if (gm.getScore() != totalScoreCached)
+        {
+            totalScoreCached = gm.getScore();
+            levelScoreCached = gm.getConditionalPoints();
+
+            if (level == 1)
+                scoreText.text = "Score: " + totalScoreCached + "\nLeaf-eating animals: " + levelScoreCached + "/5";
+            else if (level == 2)
+                scoreText.text = "Score: " + totalScoreCached + "\nMeat-eating animals: " + levelScoreCached + "/5";
         }
     }
 

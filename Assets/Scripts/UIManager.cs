@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    private static bool isStartMenu = true;
+    private static bool isStartMenu;
     private static float gameVolume = 1;
     public GameObject resetButton;
     public GameObject quitButton;
@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isStartMenu = SceneManager.GetActiveScene().buildIndex == 0;
         if (isStartMenu)
         {
             resetButton.SetActive(false);
