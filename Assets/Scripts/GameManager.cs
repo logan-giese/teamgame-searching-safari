@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
     public void endCurrentLevel()
     {
         //Level condition check
-        if(ConditionalPoints >= 1)//change to 5 for the actual game
+        if(ConditionalPoints >= 5)
         {
             //Level One
             if(level == 1)
@@ -182,9 +182,9 @@ public class GameManager : MonoBehaviour
         if(foodFlag)
         {
             //add to the ConditionalPoints if flag is true and set the flag for the infoFlags
-            if(level == 1 && food == "meat")
+            if(level == 1 && food == "broccoli")
                 ConditionalPoints++;
-            else if(level == 2 && food == "broccoli")
+            else if(level == 2 && food == "meat")
                 ConditionalPoints++;
             if(!InfoFlag[index])
                 {

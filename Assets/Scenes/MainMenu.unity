@@ -398,6 +398,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1698309261752330221, guid: 113f3708215f09b40adbe4376f32dc3b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698309261752330221, guid: 113f3708215f09b40adbe4376f32dc3b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1698309262135553496, guid: 113f3708215f09b40adbe4376f32dc3b, type: 3}
       propertyPath: canvas
       value: 
