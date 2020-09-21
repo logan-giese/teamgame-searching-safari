@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   food: broccoli
   Creature: Giraffe
-  Index: 1
+  Index: 2
 --- !u!82 &8378767512507667291
 AudioSource:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ NavMeshAgent:
   m_Radius: 2.5
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 30
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1

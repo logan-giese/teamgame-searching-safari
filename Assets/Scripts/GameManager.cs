@@ -109,14 +109,14 @@ public class GameManager : MonoBehaviour
             }
             else if(Count[1] < 1)
             {
-                //spawn Giraffe
-                Instantiate(Giraffe);
+                //spawn Lion
+                Instantiate(Lion);               
                 Count[1]++;
             }
             else if(Count[2] < 1)
             {
-                //spawn Lion
-                Instantiate(Lion);
+                //spawn Giraffe
+                Instantiate(Giraffe);
                 Count[2]++;
             }
             else if(Count[3] < 1)
@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
     public void endCurrentLevel()
     {
         //Level condition check
-        if(ConditionalPoints >= 1)
+        if(ConditionalPoints >= 1)//change to 5 for the actual game
         {
             //Level One
             if(level == 1)
@@ -177,9 +177,9 @@ public class GameManager : MonoBehaviour
     /*
     The animalHit function will take an index and a flag to decrease the count for the animal index and determine if the food was correct
     */
-    public void animalHit(int index, bool flag, string creature, string food)
+    public void animalHit(int index, bool foodFlag, string creature, string food)
     {
-        if(flag)
+        if(foodFlag)
         {
             //add to the ConditionalPoints if flag is true and set the flag for the infoFlags
             if(level == 1 && food == "meat")
@@ -198,9 +198,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            infoDisplay = creature;
             //set this.flag = false
             this.flag = 0;
         }
+        Debug.Log($"Food Type:{flag}");
     }
     public int getConditionalPoints()
     {
